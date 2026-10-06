@@ -1,0 +1,32 @@
+# Archivos que NO se suben a Vercel
+#
+# Vercel usa .gitignore, pero algunos archivos locales se cuelan y
+# hacen fallar el build. Estos se excluyen a mano.
+
+node_modules
+dist
+.vercel
+.netlify
+
+# Base de datos local: nunca debe subirse, tiene datos
+data/*.db
+
+# Variables de entorno: se puten en el panel de Vercel, no por archivo
+.env
+.env.local
+.env.*.local
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+.vscode
+.idea
+
+# Logs
+*.log
+npm-debug.log*
+
+# La CLI de Vercel no debe ser dependencia del proyecto
+vercel
+.netlify
+node_modules/.cache

@@ -24,6 +24,15 @@ html.dark body {
    circulo con el color de la marca, y al pasar el mouse se
    llena y se ilumina.
    El color de cada uno llega por la variable --color-marca.
+
+   Variables opcionales por icono:
+     --color-icono         color del icono si difiere del circulo
+     --color-icono-hover   color del icono cuando el circulo se
+                           llena (por defecto blanco)
+
+   El footer tiene fondo oscuro SIEMPRE, asi que hay marcas cuyo
+   color oficial (GitHub #181717) alli seria invisible. Para esas se
+   usa el color que la propia marca usa en su modo oscuro.
    ============================================================ */
 .icono-marca {
     display: flex;
@@ -50,7 +59,7 @@ html.dark body {
     transform: translateY(-5px) scale(1.15);
     background-color: var(--color-marca);
     border-color: var(--color-marca);
-    color: #fff;
+    color: var(--color-icono-hover, #fff);
     box-shadow: 0 8px 22px rgba(0, 0, 0, 0.45),
                 0 0 20px var(--color-marca);
     outline: none;

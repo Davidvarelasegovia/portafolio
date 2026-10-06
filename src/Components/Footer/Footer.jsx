@@ -34,6 +34,22 @@ const socialLinks = [
     color: "#25D366",
     url: "https://wa.me/56977477447",
   },
+  {
+    /*
+      GitHub no es una red social como las otras, pero va acá para que
+      el código de los proyectos esté a un clic.
+
+      GitHub tiene dos colores oficiales según el fondo: #181717 para
+      fondo claro y #e6edf3 para fondo oscuro. Como el footer siempre
+      es oscuro, se usa el segundo, que además es el que GitHub usa en
+      su propio modo oscuro. Con #181717 el ícono se perdía.
+    */
+    name: "GitHub",
+    icon: "fa-brands fa-github",
+    color: "#e6edf3",
+    colorHover: "#0d1117",
+    url: "https://github.com/Davidvarelasegovia",
+  },
 ]
 
 const Footer = () => {
@@ -49,7 +65,12 @@ const Footer = () => {
             <a
               href={link.url}
               className="social-icon icono-marca"
-              style={{ "--color-marca": link.color }}
+              style={{
+                "--color-marca": link.color,
+                /* Solo GitHub lo necesita: su icono se pone oscuro
+                   cuando el circulo se llena de blanco. */
+                "--color-icono-hover": link.colorHover ?? undefined,
+              }}
               target="_blank"
               rel="noopener noreferrer"
               title={link.name}

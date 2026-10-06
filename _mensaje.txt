@@ -1,0 +1,20 @@
+GitHub en el footer, despliegue en Vercel y arreglo de un import con mayusculas
+
+1. El footer suma el icono de GitHub con su color de marca. Como el
+   footer es oscuro siempre, se usa el color que GitHub usa en su modo
+   oscuro (#e6edf3) y no su color de fondo (#181717), que ahi no se
+   veria. El CSS acepta ahora --color-icono-hover para que al pasar el
+   mouse el icono se ponga oscuro sobre el circulo claro.
+
+2. Arreglo un bug que hacia fallar el build en Linux: Home.jsx hacia
+   import './home.css' pero el archivo se llama Home.css. En Windows da
+   igual, en Linux no, y por eso el deploy en Vercel fallaba. Se agrega
+   scripts/buscar-imports-mal.mjs para encontrar estos casos antes de
+   publicar.
+
+3. Soporte para Vercel: carpeta api/ con 7 archivos de 3 lineas que
+   reutilizan las funciones de netlify/functions/ mediante
+   server/adaptador-vercel.js. Sin logica duplicada.
+
+4. .vercelignore para que no se suban archivos locales, y se saca la CLI
+   de Vercel de las dependencias porque Vercel mismo lo pedia.
