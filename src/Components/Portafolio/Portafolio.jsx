@@ -3,18 +3,45 @@ import carrito from "../../assets/carrito.webp"
 import hotel from "../../assets/hotel.webp"
 import propinas from "../../assets/propinas.webp"
 import shop from "../../assets/shop.webp"
+import tiendaVideojuegos from "../../assets/tiendaVideojuegos.webp"
+import contadorRaciones from "../../assets/contadorRaciones.webp"
+import portafolioPropio from "../../assets/portafolio.webp"
 
 const portfolioItems = [
     {
         id:1,
-        image: carrito,
-        title: "Carrito de Compras",
-        description: "Desarrollo con ReactJS, TailwindCss, NodeJS",
-        demolink: "https://carrodecompras-react-david-varela.netlify.app/"
+        image: tiendaVideojuegos,
+        title: "Tienda de Videojuegos",
+        description: "Desarrollo con ReactJS, NodeJS, TailwindCss",
+        demolink: "https://gamesdevvar-2026.netlify.app"
     },
 
     {
         id:2,
+        image: contadorRaciones,
+        title: "Contador de Raciones",
+        description: "Desarrollo con ReactJS, NodeJS, TailwindCss",
+        demolink: "https://contadorderaciones.netlify.app"
+    },
+
+    {
+        id:3,
+        image: portafolioPropio,
+        title: "Portafolio",
+        description: "Desarrollo con ReactJS, NodeJS, TailwindCss",
+        demolink: "https://david-varela-portafolio.netlify.app"
+    },
+
+    {
+        id:4,
+        image: carrito,
+        title: "Carrito de Compras",
+        description: "Desarrollo con ReactJS, NodeJS, TailwindCss",
+        demolink: "https://carrodecompras-react-david-varela.netlify.app/"
+    },
+
+    {
+        id:5,
         image: propinas,
         title: "Calculadora de Propinas",
         description: "Desarrollo con ReactJS, TypeScript, JavaScript, TailwindCss, NodeJS",
@@ -22,7 +49,7 @@ const portfolioItems = [
     },
 
     {
-        id:3,
+        id:6,
         image: hotel,
         title: "Reserva de Hotel",
         description: "Desarrollo con ReactJS, TailwindCss, NodeJS",
@@ -30,7 +57,7 @@ const portfolioItems = [
     },
 
     {
-        id:4,
+        id:7,
         image: shop,
         title: "Tech Shop",
         description: "Desarrollo con ReactJS, TailwindCss, NodeJS",
