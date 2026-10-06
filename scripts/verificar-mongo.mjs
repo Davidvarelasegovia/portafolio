@@ -52,7 +52,7 @@ if (!URI) {
   console.log("     -> escribe 0.0.0.0/0  (Netlify no tiene IP fija)");
   console.log("  4. Click en 'Connect' > Drivers > Copia la URL");
   console.log("\n  Luego ponla en tu .env así:\n");
-  console.log("  MONGODB_URI=mongodb+srv://USUARIO:CONTRASENA@cluster0.xxxxx.mongodb.net");
+  console.log("  MONGODB_URI=mongodb+srv://USUARIO_Y_CONTRASENA@cluster0.xxxxx.mongodb.net");
   console.log("  MONGODB_DB=portafolio\n");
   process.exit(1);
 }
@@ -70,7 +70,7 @@ if (problemas.length) {
   console.log("❌ La URI tiene problemas:\n");
   problemas.forEach((p) => console.log("   - " + p));
   console.log("\n  Formato esperado:");
-  console.log("  mongodb+srv://TU_USUARIO:TU_CONTRASENA@cluster0.xxxxx.mongodb.net");
+  console.log("  mongodb+srv://TU_USUARIO_Y_TU_CONTRASENA@cluster0.xxxxx.mongodb.net");
   console.log("\n  Ojo: si tu contraseña trae @ : / # o % hay que escaparlos:");
   console.log("  @  -> %40     :  -> %3A     /  -> %2F     #  -> %23   %  -> %25\n");
   process.exit(1);

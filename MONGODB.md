@@ -149,7 +149,7 @@ cualquier dirección.
 Te va a copiar algo así:
 
 ```
-mongodb+srv://portfolio:TU_CONTRASENA@cluster0.xxxxx.mongodb.net
+mongodb+srv://portfolio_Y_TU_CONTRASENA@cluster0.xxxxx.mongodb.net
 ```
 
 Ese texto es tu **MONGODB_URI**.
@@ -164,7 +164,7 @@ Ese texto es tu **MONGODB_URI**.
 2. Abre `.env` y pega:
 
 ```bash
-MONGODB_URI=mongodb+srv://portfolio:TU_CONTRASENA@cluster0.xxxxx.mongodb.net
+MONGODB_URI=mongodb+srv://portfolio_Y_TU_CONTRASENA@cluster0.xxxxx.mongodb.net
 MONGODB_DB=portafolio
 
 ADMIN_EMAIL=davidvareladavid@gmail.com

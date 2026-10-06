@@ -70,7 +70,7 @@ if (despuesDelAt) {
 }
 
 console.log("\n--- Cómo debería verse ---\n");
-console.log("mongodb+srv://TU_USUARIO:TU_CONTRASENA_REAL@cluster0.xxxxx.mongodb.net");
+console.log("mongodb+srv://TU_USUARIO_Y_TU_CONTRASENA@cluster0.xxxxx.mongodb.net");
 console.log("             ^^^^^^^^^^^ ^^^^^^^^^^^^^^^^");
 console.log("             usuario      contraseña de verdad, NO <password>");
 console.log("");
