@@ -27,8 +27,8 @@ const About = () => {
             <div className="experience-section">
                  <div className="experience">
                     <i className=" fas fa-plus"></i>
-                    <span>1</span>
-                    <p>Trabajos Profesionles</p>
+                    <span>6</span>
+                    <p>Proyectos publicados</p>
                  </div>
             </div>
             <div className="experience-section">
