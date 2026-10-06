@@ -4,29 +4,29 @@ import VisitCounter from "../VisitCounter/VisitCounter"
 /*
   ⚙️  CONFIGURACIÓN DE REDES SOCIALES
   ------------------------------------------------------------------
-  Solo tienes que editar el campo `url` de cada objeto con tu URL real.
+  Para cambiar un enlace, edita solo el campo `url` de esa red.
   - `icon`  : clase de Font Awesome 7 (icono oficial de la red)
   - `color` : color oficial de la marca (se usa en el hover)
-  - `url`   : 👈 PON AQUÍ TU ENLACE
+  - `url`   : enlace de tu perfil
 */
 const socialLinks = [
   {
     name: "Facebook",
     icon: "fa-brands fa-facebook-f",
     color: "#1877F2",
-    url: "https://www.facebook.com/CAMBIAR_ESTE_USUARIO",
+    url: "https://www.facebook.com/share/1LgcZF4vAv/",
   },
   {
     name: "Instagram",
     icon: "fa-brands fa-instagram",
     color: "#E4405F",
-    url: "https://www.instagram.com/CAMBIAR_ESTE_USUARIO",
+    url: "https://www.instagram.com/davidvareladavid/",
   },
   {
     name: "LinkedIn",
     icon: "fa-brands fa-linkedin-in",
     color: "#0A66C2",
-    url: "https://www.linkedin.com/in/CAMBIAR_ESTE_USUARIO/",
+    url: "https://www.linkedin.com/in/david-varela-573632162",
   },
   {
     name: "WhatsApp",
