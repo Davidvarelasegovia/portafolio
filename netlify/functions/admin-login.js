@@ -1,12 +1,12 @@
-import { visitasCollection } from "../../lib/db.js";
-import { corsHeaders, responderError, crearToken } from "../../lib/auth.js";
+import { visitasCollection } from "../lib/db.js";
+import { corsHeaders, responderError, crearToken } from "../lib/auth.js";
 import {
   verificarPassword,
   hashearPassword,
   normalizarEmail,
   emailValido,
   problemaConPassword,
-} from "../../lib/passwords.js";
+} from "../lib/passwords.js";
 
 /**
  * POST /api/admin/login

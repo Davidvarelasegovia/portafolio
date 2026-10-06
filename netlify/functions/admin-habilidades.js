@@ -1,6 +1,6 @@
-import { visitasCollection } from "../../lib/db.js";
-import { corsHeaders, responderError, tokenValido } from "../../lib/auth.js";
-import seed from "../../../src/data/habilidades.js";
+import { visitasCollection } from "../lib/db.js";
+import { corsHeaders, responderError, tokenValido } from "../lib/auth.js";
+import seed from "../../src/data/habilidades.js";
 
 /**
  * GET /api/admin/habilidades   → devuelve las habilidades (público)

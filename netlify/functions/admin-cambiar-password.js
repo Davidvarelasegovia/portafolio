@@ -1,11 +1,11 @@
-import { visitasCollection } from "../../lib/db.js";
-import { corsHeaders, responderError } from "../../lib/auth.js";
+import { visitasCollection } from "../lib/db.js";
+import { corsHeaders, responderError } from "../lib/auth.js";
 import {
   verificarCodigo,
   hashearPassword,
   normalizarEmail,
   problemaConPassword,
-} from "../../lib/passwords.js";
+} from "../lib/passwords.js";
 
 /**
  * POST /api/admin/cambiar-password

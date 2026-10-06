@@ -1,10 +1,10 @@
 import nodemailer from "nodemailer";
-import { corsHeaders, responderError } from "../../lib/auth.js";
+import { corsHeaders, responderError } from "../lib/auth.js";
 import {
   prepararCodigo,
   normalizarEmail,
   emailValido,
-} from "../../lib/passwords.js";
+} from "../lib/passwords.js";
 
 /**
  * POST /api/admin/recuperar

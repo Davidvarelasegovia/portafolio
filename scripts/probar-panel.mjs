@@ -16,8 +16,8 @@ for (const linea of readFileSync(resolve(raiz, ".env"), "utf8").split(/\r?\n/)) 
   process.env[t.slice(0, i).trim()] = t.slice(i + 1).trim().replace(/^["']|["']$/g, "");
 }
 
-const { default: login } = await import("../netlify/functions/admin/login.js");
-const { default: habilidades } = await import("../netlify/functions/admin/habilidades.js");
+const { default: login } = await import("../netlify/functions/admin-login.js");
+const { default: habilidades } = await import("../netlify/functions/admin-habilidades.js");
 const { getDb } = await import("../netlify/lib/db.js");
 
 const EMAIL = process.env.ADMIN_EMAIL;

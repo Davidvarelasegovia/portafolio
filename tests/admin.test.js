@@ -1,8 +1,8 @@
 // Pruebas del panel de administración: contraseñas, códigos y permisos.
 // Ejecutar con:  node tests/admin.test.js
-import login, { asegurarAdminInicial } from "../netlify/functions/admin/login.js";
-import cambiarPassword from "../netlify/functions/admin/cambiar-password.js";
-import habilidades from "../netlify/functions/admin/habilidades.js";
+import login, { asegurarAdminInicial } from "../netlify/functions/admin-login.js";
+import cambiarPassword from "../netlify/functions/admin-cambiar-password.js";
+import habilidades from "../netlify/functions/admin-habilidades.js";
 import { crearToken, tokenValido, leerToken } from "../netlify/lib/auth.js";
 import {
   hashearPassword,

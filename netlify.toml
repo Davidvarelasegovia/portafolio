@@ -8,8 +8,37 @@
   # Con "20" a secas, Netlify instalaba una 20.x anterior y el build fallaba.
   NODE_VERSION = "22.12.0"
 
-# Rutas amigables: /api/visita -> /.netlify/functions/visita
-# (debe ir ANTES del fallback de abajo)
+# ---------------------------------------------------------------
+# Rutas de la API
+# ---------------------------------------------------------------
+# Las funciones de admin viven en la RAIZ con el prefijo admin-.
+# no funcionan con el comodin "/api/*": el splat no resuelve las
+# barras inclinadas y Netlify devuelve 404. Por eso cada ruta de
+# admin tiene su regla exacta, escrita una por una.
+#
+# OJO: el orden importa. Estas reglas van ANTES del fallback final.
+
+[[redirects]]
+  from = "/api/admin/login"
+  to = "/.netlify/functions/admin-login"
+  status = 200
+
+[[redirects]]
+  from = "/api/admin/habilidades"
+  to = "/.netlify/functions/admin-habilidades"
+  status = 200
+
+[[redirects]]
+  from = "/api/admin/recuperar"
+  to = "/.netlify/functions/admin-recuperar"
+  status = 200
+
+[[redirects]]
+  from = "/api/admin/cambiar-password"
+  to = "/.netlify/functions/admin-cambiar-password"
+  status = 200
+
+# Funciones que estan en la raiz: el comodin si funciona para estas
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/:splat"
