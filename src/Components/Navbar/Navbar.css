@@ -263,9 +263,33 @@ nav .nav-config:active {
   }
 }
 
+/*
+  Botón de menú (hamburguesa) y la X para cerrar.
+
+  El color va explícito porque <body> no define ninguno: sin esto el
+  ícono hereda el negro del navegador y en modo oscuro se veía negro
+  sobre fondo oscuro, casi invisible.
+*/
 nav .fa-bars,
 nav .fa-xmark {
   display: none;
+  color: #232155;
+}
+
+html.dark nav .fa-bars,
+html.dark nav .fa-xmark {
+  color: #ffffff;
+}
+
+nav .fa-bars:hover,
+nav .fa-xmark:hover {
+  color: #3931e1;
+}
+
+html.dark nav .fa-bars:hover,
+html.dark nav .fa-xmark:hover {
+  color: #ffffff;
+  opacity: 0.85;
 }
 
 @media only screen and (max-width: 768px) {
@@ -333,14 +357,20 @@ nav .fa-xmark {
     opacity: 0.9;
   }
 
+  /*
+    La X para cerrar vive dentro del menú azul (#3931e1), así que va
+    en blanco. Antes estaba en azul marino (#232155) y se confundía
+    con el fondo.
+  */
   nav ul .fa-solid {
     position: absolute;
     top: 25px;
     left: 25px;
     cursor: pointer;
+    color: #ffffff;
   }
 
   nav ul .fa-bars {
-    color: #232155;
+    color: #ffffff;
   }
 }

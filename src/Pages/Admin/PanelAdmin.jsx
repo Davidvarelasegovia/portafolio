@@ -221,7 +221,7 @@ const Login = ({ onEntrar }) => {
 
         <h1>
           {vista === "login"
-            ? "Panel de habilidades"
+            ? "Panel de progreso desarrollador"
             : vista === "recuperar"
               ? "Recuperar contraseña"
               : "Ingresa el código"}
@@ -229,7 +229,7 @@ const Login = ({ onEntrar }) => {
 
         <p>
           {vista === "login"
-            ? "Ingresa tu email y contraseña para editar tus habilidades."
+            ? "Ingresa tu email y contraseña para editar tu progreso."
             : vista === "recuperar"
               ? "Te enviamos un código por correo para poner una contraseña nueva."
               : `Escribe el código que llegó a ${email || "tu correo"}.`}
@@ -476,7 +476,7 @@ const PanelAdmin = () => {
     <div className="admin">
       <header className="admin__cab">
         <div>
-          <h1>Panel de habilidades</h1>
+          <h1>Panel de progreso desarrollador</h1>
           <p>{totalItems} tecnologías · cambios guardados en la base de datos</p>
         </div>
         <div className="admin__acciones">

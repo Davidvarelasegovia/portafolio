@@ -55,7 +55,7 @@ const Navbar = () => {
                     onClick={()=> setMenuOpen(false)}
                     className={enHabilidades ? "activo" : ""}
                   >
-                    Habilidades Desarrollador
+                    Progreso Desarrollador
                   </Link>
                 </li>
                 <i className="fa-solid fa-xmark"

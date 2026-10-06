@@ -27,14 +27,14 @@ const About = () => {
             <div className="experience-section">
                  <div className="experience">
                     <i className=" fas fa-plus"></i>
-                    <span>5</span>
+                    <span>1</span>
                     <p>Trabajos Profesionles</p>
                  </div>
             </div>
             <div className="experience-section">
                  <div className="experience">
                     <i className=" fas fa-plus"></i>
-                    <span>20</span>
+                    <span>10</span>
                     <p>Proyectos Realizados</p>
                  </div>
             </div>

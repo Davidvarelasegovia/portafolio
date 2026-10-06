@@ -5,7 +5,7 @@ import { NIVELES, datosIniciales } from "../../data/habilidades";
 import { cargarHabilidades } from "../../lib/habilidadesApi";
 
 /**
- * Página "Habilidades Desarrollador".
+ * Página "Progreso Desarrollador".
  * Sigue la estructura de la infografía: dos columnas,
  * Back End y Front End, cada una con sus grupos de tecnologías.
  * Abajo, los agentes de IA en una sección a lo ancho.
@@ -73,7 +73,7 @@ const HabilidadesDesarrollador = () => {
       {/* Encabezado */}
       <header className="hab__cabecera">
         <h1>
-          Habilidades
+          Progreso
           <span>Desarrollador</span>
         </h1>
         <p className="hab__lema">Build · Learn · Create · Grow</p>
