@@ -1,24 +1,44 @@
 name: Resumen diario de visitas
 
-# Netlify en plan gratuito no tiene cron nativo, así que usamos GitHub Actions
-# (gratis) para llamar a la función /api/diario una vez al día.
+# Netlify en plan gratuito no tiene cron nativo, asi que usamos GitHub
+# Actions (gratis) para llamar a la funcion /api/diario una vez al dia.
+#
+# La funcion es la que envia el correo con el resumen de visitas.
+# Se protege con CRON_SECRET para que nadie mas la dispare.
 
 on:
   schedule:
-    # 14:00 UTC = 10:00 / 11:00 hora de Chile (depende de horario de verano)
+    # 14:00 UTC = 11:00 en Chile (verano) / 10:00 (invierno)
     - cron: "0 14 * * *"
-  workflow_dispatch: # permite ejecutarlo a mano desde la pestaña Actions
+
+  # Permite ejecutarlo a mano desde la pestaña Actions, sin esperar al dia
+  workflow_dispatch:
 
 jobs:
   enviar-resumen:
+    name: Enviar resumen por correo
     runs-on: ubuntu-latest
-    steps:
-      - name: Pedir resumen de visitas a Netlify
-        run: |
-          curl --fail --silent --show-error \
-            -H "x-cron-secret: ${{ secrets.CRON_SECRET }}" \
-            "${{ secrets.NETLIFY_DIARIO_URL }}"
 
-      - name: Mostrar resultado
-        if: always()
-        run: echo "Listo."
+    steps:
+      - name: Pedir el resumen de visitas a Netlify
+        run: |
+          echo "Llamando a la funcion diaria..."
+          respuesta=$(curl --silent --show-error --write-out "\nHTTP_STATUS:%{http_code}" \
+            --header "x-cron-secret: ${{ secrets.CRON_SECRET }}" \
+            "${{ secrets.NETLIFY_DIARIO_URL }}")
+
+          # Netlify devuelve HTTP 200 si salio bien. Con --fail curl
+          # cortaria antes de que veamos el mensaje de error real.
+          estado=$(echo "$respuesta" | tail -n 1 | sed 's/HTTP_STATUS://')
+          cuerpo=$(echo "$respuesta" | sed '$d')
+
+          echo "Respuesta de Netlify: $cuerpo"
+
+          if [ "$estado" = "200" ]; then
+            echo "Listo."
+          elif echo "$cuerpo" | grep -q "omitido"; then
+            echo "Ya se habia enviado el resumen de hoy. No es un error."
+          else
+            echo "::error::La funcion fallo con HTTP $estado"
+            exit 1
+          fi
