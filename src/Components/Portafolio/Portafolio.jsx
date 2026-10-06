@@ -36,8 +36,9 @@ const portfolioItems = [
     id: 2,
     image: tiendaVideojuegos,
     title: "Tienda de Videojuegos",
-    description: "Desarrollo con ReactJS, NodeJS, TailwindCss",
+    description: "Desarrollo con ReactJS, TailwindCss",
     demolink: "https://gamesdevvar-2026.netlify.app",
+    codigo: "https://github.com/Davidvarelasegovia/tienda-videojuegos",
   },
 
   {
@@ -48,8 +49,8 @@ const portfolioItems = [
     demolink: "https://contadorderaciones.netlify.app",
     /*
       Este repositorio es PRIVADO, por eso no lleva `codigo`.
-      Si lo haces publico en GitHub, agrega esta linea y el boton
-      "Ver codigo" aparecesolo:
+      Si lo haces publico en GitHub, descomenta esta linea y el
+      boton "Ver codigo" aparecera en la tarjeta:
       codigo: "https://github.com/Davidvarelasegovia/contador-de-raciones",
     */
   },
@@ -67,8 +68,9 @@ const portfolioItems = [
     id: 5,
     image: carrito,
     title: "Carrito de Compras",
-    description: "Desarrollo con ReactJS, NodeJS, TailwindCss",
+    description: "Desarrollo con ReactJS, TailwindCss",
     demolink: "https://carrodecompras-react-david-varela.netlify.app/",
+    codigo: "https://github.com/Davidvarelasegovia/carrito-de-compras",
   },
 
   {
@@ -76,8 +78,9 @@ const portfolioItems = [
     image: propinas,
     title: "Calculadora de Propinas",
     description:
-      "Desarrollo con ReactJS, TypeScript, JavaScript, TailwindCss, NodeJS",
+      "Desarrollo con ReactJS, TailwindCss",
     demolink: "https://propinacarritodavidvarela.netlify.app/",
+    codigo: "https://github.com/Davidvarelasegovia/calculadora-propinas",
   },
 ]
 
