@@ -85,6 +85,50 @@ html.dark    .portafolio-content p {
     opacity: 0.9;
 }
 
+/* Fila con los dos botones: demo y codigo */
+.portafolio-botones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* Boton "Ver codigo": fondo transparente con borde, para que se
+   distinga del boton azul de la demo sin competir con el. */
+.codigo-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+    background: transparent;
+    color: #3931e1;
+    border: 1.5px solid #3931e1;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.codigo-button:hover {
+    background: #3931e1;
+    color: white;
+}
+
+.codigo-button i {
+    font-size: 1.1em;
+}
+
+html.dark .codigo-button {
+    color: #fff;
+    border-color: #fff;
+}
+
+html.dark .codigo-button:hover {
+    background: #fff;
+    color: #232155;
+}
+
 /* Diseño responsive */
 @media (min-width: 768px) {
  .portafolio-container {
