@@ -1,218 +1,346 @@
+/*
+  ============================================================
+  NAVBAR
+  ============================================================
+  Tres cosas que se corrigieron:
+
+  1. El logo: el original tiene "DAVID" en azul claro y "VARELA S."
+     en azul marino casi negro, invisible sobre el fondo oscuro.
+     Hay dos imagenes y se muestra una u otra segun el tema.
+
+  2. Los links se partian en dos lineas ("Sobre mi" quedaba como
+     "Sobre" + "mi") porque no tenian white-space: nowrap. Además
+     el tamano de letra era fijo en rem, mientras el espacio entre
+     links si escalaba, asi que a certain tamano ya no cabian.
+
+  3. El boton de tema era mas grande que el engranaje y quedaban
+     desalineados. Ahora los dos miden lo mismo y comparten
+     alineacion.
+
+  Para cambiar el tamano de los links: la variable --nav-letra.
+  ============================================================
+*/
+
 nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 1vw 8vw;
-    align-items: center;
-    z-index: 999;
-    box-shadow: 0 1px 3 px rgba(0, 0, 0.1);
-    background:
-    linear-gradient(to right, #f9f9f9, #f3f0ff, #f9f9f9);
-    transition: background 0.3s ease;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1vw 8vw;
+  align-items: center;
+  z-index: 999;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to right, #f9f9f9, #f3f0ff, #f9f9f9);
+  transition: background 0.3s ease;
+
+  /*
+    Tamano de letra de los links.
+
+    OJO: con clamp() y vw el navegador calcula sobre el ancho de la
+    ventana, no sobre el ancho del nav. Como el nav es 100% casi
+    coincide, pero en pantallas chicas se mezclaba con el menu movil.
+
+    Ahora se usan puntos de corte fijos, que son predecibles: en
+    pantallas grandes va comoda, en medianas baja un poco y en
+    pequenas el menu pasa a hamburguesa (ver media query de 768px).
+  */
+  --nav-letra: 1.05rem;
+  --nav-logo-ancho: 150px;
+  --nav-margen: 8vw;
+  --nav-separacion: 22px;
 }
 
 html.dark nav {
-    background:
-    linear-gradient(to right, #121130, #1e1d4b, #121130);
+  background: linear-gradient(to right, #121130, #1e1d4b, #121130);
 }
 
 html.dark nav ul li a {
-    color: #f9f9f9;
+  color: #f9f9f9;
+}
+
+/* ------------------------------------------------------------
+   LOGO
+   Se superponen las dos imagenes en el mismo lugar y se muestra
+   solo la que corresponde al tema. Por eso el nav necesita
+   position: relative (ya lo tiene por ser fixed) y el logo
+   position: absolute para no empujar al menu.
+   ------------------------------------------------------------ */
+nav .nav-logo {
+  position: absolute;
+  left: var(--nav-margen);
+  width: var(--nav-logo-ancho);
+  height: auto;
+  /* sin borde inferior de imagen */
+  border: 0;
+}
+
+nav .nav-logo--dark {
+  display: none;
+}
+
+html.dark nav .nav-logo--light {
+  display: none;
+}
+
+html.dark nav .nav-logo--dark {
+  display: block;
 }
 
 nav ul.active {
-   right:0;
-}
-
-nav img {
-    width: 150px;
+  right: 0;
 }
 
 nav ul {
-     display: flex;
-     list-style-type: none;
-     margin: 0;
-     padding: 0;
-     /* El espaciado va aquí con gap en vez de margin+padding en cada li.
-        Con 6 links, tener 45px extra por cada uno empujaba el último
-        link fuera del nav en pantallas anchas. */
-     gap: clamp(6px, 1.1vw, 22px);
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  /*
+    El espaciado va aquí con gap en vez de margin+padding en cada li.
+    Con 6 links, tener 45px extra por cada uno empujaba el último
+    link fuera del nav en pantallas anchas.
+
+    El margen izquierdo deja sitio al logo, que es absoluto.
+  */
+  gap: var(--nav-separacion);
+  margin-left: calc(var(--nav-logo-ancho) + 20px);
 }
 
 nav ul li {
-    /* sin margin-right ni padding: el gap del ul ya separa */
+  /* sin margin-right ni padding: el gap del ul ya separa */
 }
 
 nav ul li a {
-   text-decoration: none;
-   color:#232155;
-   font-size: 1rem;
-   position:relative;
-   transition: color 0.3s ease;
+  text-decoration: none;
+  color: #232155;
+  font-size: var(--nav-letra);
+  position: relative;
+  transition: color 0.3s ease;
+
+  /* Sin esto "Sobre mi" se partía en dos lineas y desalineaba
+     todo el navbar. Un link del menu nunca debe partirse. */
+  white-space: nowrap;
 }
 
-
 nav ul li a::after {
-content: "";
-width: 0;
-height: 3px;
-background: #3931e1;
-position: absolute;
-left: 0;
-bottom: -6px;
-transition: width 0.5s ease;
+  content: "";
+  width: 0;
+  height: 3px;
+  background: #3931e1;
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  transition: width 0.5s ease;
 }
 
 nav ul li a:hover::after {
-    width:100%;
+  width: 100%;
 }
 
 /* Link activo (página actual) */
 nav ul li a.activo {
-    color: #3931e1;
+  color: #3931e1;
 }
 
 nav ul li a.activo::after {
-    width: 100%;
+  width: 100%;
 }
 
+/* ------------------------------------------------------------
+   ZONA DERECHA: engranaje + sol/luna + menu movil
+   ------------------------------------------------------------ */
 nav .nav-actions {
-    display: flex;
-    align-items: center;
-    gap: clamp(8px, 1vw, 16px);
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1vw, 16px);
 }
 
-/* Botón de configuración: pequeño y discreto, al lado del sol/luna.
-   Lleva al panel de habilidades (/admin). */
+/*
+  Botón de configuración: pequeño y discreto, al lado del sol/luna.
+  Lleva al panel de habilidades (/admin).
+
+  Ahora comparte tamaño con el botón de tema para que los dos queden
+  alineados. Antes medían 28px y ~50px respectivamente, y se veía el
+  desfase.
+*/
 nav .nav-config {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    color: #9a9aae;
-    font-size: 13px;
-    text-decoration: none;
-    border: 1px solid transparent;
-    transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  color: #9a9aae;
+  font-size: 14px;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
 }
 
 nav .nav-config:hover,
 nav .nav-config:focus-visible {
-    color: #3931e1;
-    background-color: rgba(57, 49, 225, 0.1);
-    border-color: rgba(57, 49, 225, 0.35);
-    outline: none;
+  color: #3931e1;
+  background-color: rgba(57, 49, 225, 0.1);
+  border-color: rgba(57, 49, 225, 0.35);
+  outline: none;
 }
 
 nav .nav-config:active {
-    transform: scale(0.94);
+  transform: scale(0.94);
 }
 
 /* En pantallas chicas se achica un poco más para no comerse el espacio */
 @media only screen and (max-width: 768px) {
-    nav .nav-config {
-        width: 24px;
-        height: 24px;
-        font-size: 12px;
-    }
+  nav .nav-config {
+    width: 30px;
+    height: 30px;
+    font-size: 13px;
+  }
 
-    nav .nav-actions {
-        gap: 8px;
-    }
+  nav .nav-actions {
+    gap: 8px;
+  }
 }
 
-/* Zona de transición: el nav todavía va en horizontal pero aprieta.
-   Ojo con el min-width: con barra de scroll vertical el viewport real
-   es ~15px más angosto que la ventana, así que 769px de ventana
-   quedan en ~754px y una regla que empiece en 769 no se aplicaría. */
-@media only screen and (min-width: 600px) and (max-width: 1150px) {
-    nav {
-        padding: 0.8vw 4vw;
-    }
+/*
+  Zona de transición: el nav sigue en horizontal pero se aprieta.
 
-    nav ul {
-        gap: 4px;
-    }
+  Hay 3 franjas porque los 6 links no caben todos del mismo tamaño:
 
-    nav ul li a {
-        font-size: 0.88rem;
-    }
+    769 - 1150px  links chicos, logo mas chico, margen al borde
+    1151 - 1350px  links medianos, logo normal
+    > 1350px      todo comodo
 
-    nav .nav-config {
-        width: 24px;
-        height: 24px;
-        font-size: 12px;
-    }
+  Con esto los links dejan de salirse del nav entre 768 y 1024px,
+  que era justo donde "Sobre mi" se partia en dos lineas.
+*/
+@media only screen and (min-width: 769px) and (max-width: 1150px) {
+  nav {
+    padding: 0.8vw 3vw;
+    --nav-letra: 0.8rem;
+    --nav-logo-ancho: 118px;
+    --nav-margen: 3vw;
+    --nav-separacion: 6px;
+  }
 
-    nav .nav-actions {
-        gap: 8px;
-    }
+  nav .nav-config {
+    width: 30px;
+    height: 30px;
+    font-size: 13px;
+  }
 
-    .theme-toggle-button {
-        width: 38px;
-        height: 38px;
-        padding: 8px;
-        font-size: 17px;
-    }
+  nav .nav-actions {
+    gap: 8px;
+  }
+
+  /* El botón de tema se ajusta al engranaje en esta franja */
+  nav .theme-toggle-button {
+    --tema-lado: 30px;
+    --tema-icon: 14px;
+  }
+}
+
+@media only screen and (min-width: 1151px) and (max-width: 1350px) {
+  nav {
+    padding: 0.8vw 4vw;
+    --nav-letra: 0.92rem;
+    --nav-logo-ancho: 135px;
+    --nav-margen: 4vw;
+    --nav-separacion: 12px;
+  }
+
+  nav .nav-config {
+    width: 33px;
+    height: 33px;
+    font-size: 14px;
+  }
+
+  nav .theme-toggle-button {
+    --tema-lado: 33px;
+    --tema-icon: 16px;
+  }
 }
 
 nav .fa-bars,
 nav .fa-xmark {
-    display: none;
+  display: none;
 }
 
 @media only screen and (max-width: 768px) {
-   nav .fa-bars,
-   nav .fa-xmark {
-        display: block;
-        font-size: 25px;
-        cursor: pointer;
-   }
+  nav {
+    padding: 0.7rem 1rem;
+    --nav-letra: 1rem;
+  }
 
-     nav ul {
-        background: #3931e1;
-        color: #fff;
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 200px;
-        height: 100vh;
-        padding-top: 50px;
-        z-index: 2;
-        transition: right 0.5s;
-        display: flex ;
-        flex-direction: column;
-        gap: 20px;
-        align-items: center;
-     }
+  nav .fa-bars,
+  nav .fa-xmark {
+    display: block;
+    font-size: 25px;
+    cursor: pointer;
+  }
 
-     nav ul li {
-        display: block;
-        margin: 25px;
-     }
+  /*
+    En móvil el logo vuelve al flujo normal (ya no es absoluto) porque
+    el menú lateral lo tapa y no conviene dejarlo flotando atrás.
 
-    nav ul li a {
-        color: #fff;
-    }
+    NO se agregan reglas de cuál logo se muestra acá: las de arriba
+    con "html.dark" ya cubren ambos temas a cualquier ancho. Si se
+    agregan aquí con menos especificidad, gana la de "html.dark" y se
+    verían los dos logos a la vez en modo oscuro.
+  */
+  nav .nav-logo {
+    position: static;
+    width: 118px;
+  }
 
-    nav ul li a:hover {
-      opacity: 0.9;
-    }
+  /* El engranaje mide 30px en móvil, así que el sol/luna también */
+  nav .theme-toggle-button {
+    --tema-lado: 30px;
+    --tema-icon: 14px;
+  }
 
-    nav ul .fa-solid {
-        position: absolute;
-        top: 25px;
-        left: 25px;
-        cursor: pointer;
-    }
+  nav ul {
+    background: #3931e1;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 200px;
+    height: 100vh;
+    padding-top: 50px;
+    z-index: 2;
+    transition: right 0.5s;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    margin-left: 0;
+  }
 
-     nav ul .fa-bars {
-        color: #232155;
-    }
+  nav ul li {
+    display: block;
+    margin: 25px;
+  }
 
+  nav ul li a {
+    color: #fff;
+    font-size: 1rem;
+  }
+
+  nav ul li a:hover {
+    opacity: 0.9;
+  }
+
+  nav ul .fa-solid {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    cursor: pointer;
+  }
+
+  nav ul .fa-bars {
+    color: #232155;
+  }
 }

@@ -1,5 +1,6 @@
 import "./Navbar.css"
-import logo_light from "../../assets/logo_light.webp"
+import logoLight from "../../assets/logo_light.webp"
+import logoOscuro from "../../assets/logo_oscuro.webp"
 import ThemeToggle from "../ThemeToggle/ThemeToggle"
 import { useState } from "react"
 import { Link, useLocation, useNavigate } from "react-router-dom"
@@ -32,7 +33,14 @@ const Navbar = () => {
 
   return (
      <nav>
-        <img src={logo_light} alt="logo" className="logo" />
+        {/*
+          Dos versiones del logo. El original tiene "DAVID" en azul claro
+          y "VARELA S." en azul marino casi negro, que sobre el fondo
+          oscuro del navbar no se lee. La version oscura trae esas
+          letras en blanco. Se muestran una u otra segun el tema.
+        */}
+        <img src={logoLight} alt="David Varela" className="nav-logo nav-logo--light" />
+        <img src={logoOscuro} alt="David Varela" className="nav-logo nav-logo--dark" />
         <ul className={menuOpen ? "active" : ""}>
                 <li>
                   <Link to="/" onClick={()=> setMenuOpen(false)}>Home</Link>

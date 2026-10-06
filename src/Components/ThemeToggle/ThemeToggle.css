@@ -1,16 +1,60 @@
+/*
+  ============================================================
+  BOTÓN DE TEMA (sol / luna)
+  ============================================================
+
+  Antes el botón se dimensionaba con padding (10px 15px) más el
+  font-size, y quedaba de ~50x40px. El engranaje de al lado mide
+  36px, así que los dos se veían desproporcionados y el icono
+  descentrado.
+
+  Ahora el tamaño lo fija width/height (como el engranaje) y el
+  icono se centra con flex en las dos direcciones. Para cambiar
+  el tamaño: las variables --tema-lado y --tema-icon.
+*/
+
 .theme-toggle-button {
+  /* Defaults; el navbar los puede sobrescribir por franja de ancho */
+  --tema-lado: 36px;
+  --tema-icon: 18px;
+
   display: flex;
   align-items: center;
-  padding: 10px 15px;
+  justify-content: center;
+
+  width: var(--tema-lado);
+  height: var(--tema-lado);
+  padding: 0;
+
   background-color: #3931e1;
   color: #fff;
-  border-radius: 8px;
-  font-size: 20px;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
   border: none;
+  border-radius: 8px;
+
+  font-size: var(--tema-icon);
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, opacity 0.3s;
+}
+
+/* El <i> es lo único dentro del botón: se centra y no hereda
+   tamaños raros del botón. */
+.theme-toggle-button i {
+  display: block;
+  line-height: 1;
 }
 
 .theme-toggle-button:hover {
-    opacity: 0.9;
+  opacity: 0.9;
+}
+
+.theme-toggle-button:active {
+  transform: scale(0.94);
+}
+
+/* Foco visible para teclado: sin esto el botón no muestra dónde
+   estás parado si navegas con tabulador. */
+.theme-toggle-button:focus-visible {
+  outline: 2px solid #3931e1;
+  outline-offset: 2px;
 }

@@ -12,13 +12,15 @@ const { adaptar } = await import("./adaptador.js");
 
 // Importa las MISMAS funciones que usa Netlify, para que el proyecto
 // tenga una sola copia de la lógica (vale para Netlify y para el futuro VPS).
+// Ojo: las de admin están en la raíz con prefijo "admin-", no en una
+// subcarpeta, porque Netlify no empaqueta las funciones anidadas.
 const visita = (await import("../netlify/functions/visita.js")).default;
 const contador = (await import("../netlify/functions/contador.js")).default;
 const diario = (await import("../netlify/functions/diario.js")).default;
-const login = (await import("../netlify/functions/admin/login.js")).default;
-const habilidades = (await import("../netlify/functions/admin/habilidades.js")).default;
-const recuperar = (await import("../netlify/functions/admin/recuperar.js")).default;
-const cambiarPassword = (await import("../netlify/functions/admin/cambiar-password.js")).default;
+const login = (await import("../netlify/functions/admin-login.js")).default;
+const habilidades = (await import("../netlify/functions/admin-habilidades.js")).default;
+const recuperar = (await import("../netlify/functions/admin-recuperar.js")).default;
+const cambiarPassword = (await import("../netlify/functions/admin-cambiar-password.js")).default;
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const RAIZ = resolve(__dirname, "..");
