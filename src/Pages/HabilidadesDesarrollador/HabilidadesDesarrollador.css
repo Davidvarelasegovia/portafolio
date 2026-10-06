@@ -1,0 +1,315 @@
+/* ============================================================
+   Página de Habilidades del Desarrollador
+   Mismo lenguaje visual que el resto del portafolio.
+   ============================================================ */
+.habilidades {
+    margin-top: 80px;
+    padding: 0 8vw 40px;
+}
+
+/* ---------------- Encabezado ---------------- */
+.hab__cabecera {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.hab__cabecera h1 {
+    font-size: clamp(2.2rem, 6vw, 3.8rem);
+    line-height: 1.08;
+    color: #232155;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+}
+
+.hab__cabecera h1 span {
+    display: block;
+    color: #3931e1;
+}
+
+html.dark .hab__cabecera h1 {
+    color: #fff;
+}
+
+html.dark .hab__cabecera h1 span {
+    color: #b6b0ff;
+}
+
+.hab__lema {
+    margin-top: 12px;
+    font-size: 0.95rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #8a8aa3;
+}
+
+/* ---------------- Leyenda ---------------- */
+.leyenda {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 35px;
+}
+
+.leyenda__titulo {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #232155;
+}
+
+html.dark .leyenda__titulo {
+    color: #fff;
+}
+
+.leyenda__item {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+.leyenda__item--basico {
+    color: #e07a5f;
+    background-color: rgba(224, 122, 95, 0.14);
+    border: 1px solid rgba(224, 122, 95, 0.4);
+}
+
+.leyenda__item--medio {
+    color: #b8860b;
+    background-color: rgba(233, 196, 106, 0.18);
+    border: 1px solid rgba(233, 196, 106, 0.5);
+}
+
+.leyenda__item--avanzado {
+    color: #1a9d4b;
+    background-color: rgba(37, 211, 102, 0.14);
+    border: 1px solid rgba(37, 211, 102, 0.4);
+}
+
+/* ---------------- Columnas Back End / Front End ---------------- */
+.hab__columnas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 26px;
+    align-items: start;
+}
+
+.col__cabecera {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    border-radius: 14px;
+    margin-bottom: 20px;
+    /* Colores distintos para cada columna, como en la infografía */
+    background: linear-gradient(135deg, #e8f0fe, #f5f2ff);
+    border: 1px solid #d8d3ff;
+}
+
+.col:nth-child(2) .col__cabecera {
+    background: linear-gradient(135deg, #e6f7ed, #f2fbf6);
+    border-color: #c9ead6;
+}
+
+html.dark .col__cabecera {
+    background: rgba(57, 49, 225, 0.18);
+    border-color: #49478d;
+}
+
+html.dark .col:nth-child(2) .col__cabecera {
+    background: rgba(37, 211, 102, 0.14);
+}
+
+.col__icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    border-radius: 14px;
+    background: #3931e1;
+    color: #fff;
+    font-size: 26px;
+    flex-shrink: 0;
+}
+
+.col:nth-child(2) .col__icono {
+    background: #25d366;
+    color: #08321c;
+}
+
+.col__cabecera h2 {
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    color: #232155;
+    letter-spacing: 0.5px;
+}
+
+html.dark .col__cabecera h2 {
+    color: #fff;
+}
+
+.col__cabecera p {
+    font-size: 0.85rem;
+    color: #4a4b6d;
+    line-height: 1.4;
+}
+
+html.dark .col__cabecera p {
+    color: #c9c9dd;
+}
+
+/* ---------------- Grupos de tecnologías ---------------- */
+.grupo {
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #e6e3f5;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.06);
+}
+
+html.dark .grupo {
+    background: #1b1a45;
+    border-color: #49478d;
+}
+
+.grupo__titulo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 12px;
+    margin-bottom: 6px;
+    border-bottom: 1px solid #eeeef8;
+}
+
+html.dark .grupo__titulo {
+    border-bottom-color: rgba(249, 249, 249, 0.12);
+}
+
+.grupo__titulo > i {
+    font-size: 1.35rem;
+    color: #3931e1;
+    flex-shrink: 0;
+}
+
+.grupo__titulo h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: #232155;
+}
+
+html.dark .grupo__titulo h3 {
+    color: #fff;
+}
+
+.grupo__titulo p {
+    font-size: 0.8rem;
+    color: #8a8aa3;
+}
+
+html.dark .grupo__titulo p {
+    color: #a9a9c4;
+}
+
+.grupo__skills {
+    display: block;
+}
+
+/* ---------------- Agentes de IA ---------------- */
+.hab__agentes {
+    margin-top: 34px;
+}
+
+/* Cabecera con un color propio para distinguirla */
+.hab__agentes .col__cabecera {
+    background: linear-gradient(135deg, #f3e8ff, #ede9fe);
+    border-color: #ddd0f5;
+}
+
+html.dark .hab__agentes .col__cabecera {
+    background: rgba(139, 92, 246, 0.18);
+    border-color: #49478d;
+}
+
+.hab__agentes .col__icono {
+    background: #8b5cf6;
+    color: #fff;
+}
+
+/* Los grupos se reparten en dos columnas para aprovechar el ancho */
+.col__grupos--grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+.col__grupos--grid .grupo {
+    margin-bottom: 0;
+}
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 900px) {
+    .hab__columnas {
+        grid-template-columns: 1fr;
+    }
+
+    .col__grupos--grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .habilidades {
+        margin-top: 70px;
+        padding: 0 5vw 30px;
+    }
+
+    .col__cabecera {
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .col__icono {
+        width: 46px;
+        height: 46px;
+        font-size: 21px;
+    }
+
+    .col__cabecera h2 {
+        font-size: 1.35rem;
+    }
+
+    .grupo {
+        padding: 16px;
+    }
+
+    .skill__logo {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .skill__fila {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    /* En el celular el logo se alinea con el nombre, no al centro */
+    .skill {
+        align-items: flex-start;
+    }
+
+    .skill__logo {
+        margin-top: 2px;
+    }
+}

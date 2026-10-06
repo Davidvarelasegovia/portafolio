@@ -1,0 +1,557 @@
+/* ============================================================
+   Panel de administración de habilidades
+   ============================================================ */
+
+/* ---------------- Login ---------------- */
+.login {
+    margin-top: 80px;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.login__caja {
+    width: 100%;
+    max-width: 380px;
+    text-align: center;
+    padding: 34px 28px;
+    background: #fff;
+    border: 1px solid #e6e3f5;
+    border-radius: 14px;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+html.dark .login__caja {
+    background: #1b1a45;
+    border-color: #49478d;
+}
+
+.login__icono {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #3931e1;
+    color: #fff;
+    font-size: 22px;
+    margin-bottom: 14px;
+}
+
+.login__caja h1 {
+    font-size: 1.4rem;
+    color: #232155;
+    margin-bottom: 6px;
+}
+
+html.dark .login__caja h1 {
+    color: #fff;
+}
+
+.login__caja p {
+    font-size: 0.88rem;
+    color: #4a4b6d;
+    margin-bottom: 18px;
+}
+
+.login__casa input,
+.login__caja input[type="password"],
+.login__caja input[type="email"],
+.login__caja input[type="text"] {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: inherit;
+    outline: none;
+    background: #fff;
+    color: #232155;
+}
+
+.login__caja input:focus {
+    border-color: #3931e1;
+}
+
+html.dark .login__caja input {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: #49478d;
+    color: #fff;
+}
+
+/* Código de 6 dígitos: grande y espaciado para leerlo bien */
+.login__codigo {
+    text-align: center;
+    letter-spacing: 10px;
+    font-size: 22px !important;
+    font-weight: 700;
+    font-family: monospace !important;
+}
+
+/* Email al que se envió el código */
+.login__email {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    font-size: 0.85rem !important;
+    color: #3931e1 !important;
+    margin-bottom: 14px !important;
+}
+
+html.dark .login__email {
+    color: #b6b0ff !important;
+}
+
+.login__pista {
+    font-size: 0.78rem !important;
+    color: #8a8aa3 !important;
+    margin: -4px 0 12px !important;
+}
+
+.login__caja button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #3931e1;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.login__caja button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+/* Enlace para recuperar la contraseña (no es un botón de acción) */
+.login__pie {
+    margin-top: 16px;
+}
+
+.login__enlace {
+    width: 100%;
+    padding: 0;
+    background: transparent !important;
+    color: #6b6b80 !important;
+    font-size: 0.85rem !important;
+    font-weight: 400 !important;
+    text-decoration: underline;
+}
+
+.login__enlace:hover {
+    color: #3931e1 !important;
+    opacity: 1;
+}
+
+.login__error {
+    color: #d92d20 !important;
+    font-size: 0.85rem !important;
+    margin-bottom: 10px !important;
+}
+
+.login__info {
+    color: #12833d !important;
+    font-size: 0.85rem !important;
+    margin-bottom: 10px !important;
+}
+
+/* ---------------- Cabecera del panel ---------------- */
+.admin {
+    margin-top: 80px;
+    padding: 0 8vw 50px;
+}
+
+.admin__cab {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e6e3f5;
+}
+
+html.dark .admin__cab {
+    border-bottom-color: rgba(249, 249, 249, 0.12);
+}
+
+.admin__cab h1 {
+    font-size: 1.8rem;
+    color: #232155;
+}
+
+html.dark .admin__cab h1 {
+    color: #fff;
+}
+
+.admin__cab p {
+    font-size: 0.88rem;
+    color: #4a4b6d;
+}
+
+.admin__acciones {
+    display: flex;
+    gap: 10px;
+}
+
+.admin__guardar,
+.admin__salir {
+    padding: 11px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.admin__guardar {
+    background: #3931e1;
+    color: #fff;
+}
+
+.admin__guardar:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.admin__salir {
+    background: transparent;
+    color: #6b6b80;
+    border: 1px solid #d8d8e8;
+}
+
+.admin__salir:hover {
+    background: #f0f0f8;
+}
+
+.admin__msj {
+    padding: 11px 14px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    margin-bottom: 16px;
+}
+
+.admin__msj--ok {
+    background: rgba(37, 211, 102, 0.14);
+    color: #12833d;
+    border: 1px solid rgba(37, 211, 102, 0.4);
+}
+
+.admin__msj--error {
+    background: rgba(217, 45, 32, 0.1);
+    color: #d92d20;
+    border: 1px solid rgba(217, 45, 32, 0.3);
+}
+
+/* ---------------- Tabs ---------------- */
+.admin__tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 22px;
+    flex-wrap: wrap;
+}
+
+.admin__tabs button {
+    padding: 10px 18px;
+    border: 1px solid #d8d8e8;
+    border-radius: 20px;
+    background: transparent;
+    color: #4a4b6d;
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.admin__tabs button:hover {
+    border-color: #3931e1;
+    color: #3931e1;
+}
+
+.admin__tabs button.activa {
+    background: #3931e1;
+    border-color: #3931e1;
+    color: #fff;
+}
+
+html.dark .admin__tabs button {
+    color: #c9c9dd;
+    border-color: #49478d;
+}
+
+/* ---------------- Grupos ---------------- */
+.admin__cuerpo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 20px;
+    align-items: start;
+}
+
+.grupoAdmin {
+    padding: 18px;
+    border: 1px solid #e6e3f5;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+html.dark .grupoAdmin {
+    background: #1b1a45;
+    border-color: #49478d;
+}
+
+.grupoAdmin__cab {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #eeeef8;
+}
+
+html.dark .grupoAdmin__cab {
+    border-bottom-color: rgba(249, 249, 249, 0.12);
+}
+
+.grupoAdmin__titulo {
+    flex: 1;
+    padding: 8px 10px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    background: #f7f7fd;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: #232155;
+    font-family: inherit;
+    outline: none;
+}
+
+.grupoAdmin__titulo:focus {
+    border-color: #3931e1;
+    background: #fff;
+}
+
+html.dark .grupoAdmin__titulo {
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+}
+
+html.dark .grupoAdmin__titulo:focus {
+    background: rgba(57, 49, 225, 0.2);
+}
+
+.grupoAdmin__borrar {
+    padding: 7px 9px;
+    border: 1px solid #d8d8e8;
+    border-radius: 6px;
+    background: transparent;
+    color: #999;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.grupoAdmin__borrar:hover {
+    color: #d92d20;
+    border-color: #d92d20;
+    background: rgba(217, 45, 32, 0.08);
+}
+
+/* ---------------- Editor de habilidad ---------------- */
+.editor {
+    padding: 9px 0;
+    border-bottom: 1px solid #f2f2f8;
+}
+
+html.dark .editor {
+    border-bottom-color: rgba(249, 249, 249, 0.08);
+}
+
+/* Cada fila es independiente para que nada se desborde */
+.editor__fila {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+}
+
+.editor__fila--pct {
+    margin-top: 7px;
+    padding-left: 15px;
+}
+
+.editor__punto {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.editor__punto[data-nivel="basico"] { background: #e07a5f; }
+.editor__punto[data-nivel="medio"] { background: #e9c46a; }
+.editor__punto[data-nivel="avanzado"] { background: #25d366; }
+
+.editor input {
+    padding: 7px 9px;
+    border: 1px solid #e0e0ee;
+    border-radius: 6px;
+    background: #fbfbff;
+    font-size: 0.85rem;
+    font-family: inherit;
+    color: #232155;
+    outline: none;
+    min-width: 0;
+}
+
+.editor input:focus {
+    border-color: #3931e1;
+    background: #fff;
+}
+
+html.dark .editor input {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: #49478d;
+    color: #fff;
+}
+
+html.dark .editor input:focus {
+    background: rgba(57, 49, 225, 0.2);
+}
+
+.editor__nombre {
+    flex: 1;
+    font-weight: 600;
+    min-width: 0;
+}
+
+.editor__logo {
+    width: 88px;
+    flex-shrink: 0;
+    font-size: 0.78rem !important;
+}
+
+.editor__color {
+    width: 32px;
+    height: 30px;
+    padding: 2px !important;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.editor__pct {
+    flex: 1;
+    padding: 0 !important;
+    height: 20px;
+    accent-color: #3931e1;
+    cursor: pointer;
+}
+
+.editor__valor {
+    width: 42px;
+    flex-shrink: 0;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #3931e1;
+    text-align: right;
+}
+
+html.dark .editor__valor {
+    color: #b6b0ff;
+}
+
+.editor__nivel {
+    width: 80px;
+    flex-shrink: 0;
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    text-align: center;
+    padding: 4px 2px;
+    border-radius: 12px;
+}
+
+.editor__nivel[data-nivel="basico"] {
+    color: #b3542f; background: rgba(224, 122, 95, 0.16);
+}
+.editor__nivel[data-nivel="medio"] {
+    color: #9a7b0a; background: rgba(233, 196, 106, 0.2);
+}
+.editor__nivel[data-nivel="avanzado"] {
+    color: #12833d; background: rgba(37, 211, 102, 0.16);
+}
+
+.editor__borrar {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: #bbb;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.editor__borrar:hover {
+    color: #d92d20;
+    background: rgba(217, 45, 32, 0.1);
+}/* ---------------- Botones agregar ---------------- */
+.agregar {
+    width: 100%;
+    margin-top: 12px;
+    padding: 10px;
+    border: 1px dashed #b8b8d8;
+    border-radius: 8px;
+    background: transparent;
+    color: #5a5a75;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.agregar:hover {
+    border-color: #3931e1;
+    color: #3931e1;
+    background: rgba(57, 49, 225, 0.06);
+}
+
+.agregar--grupo {
+    max-width: 380px;
+}
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 768px) {
+    .admin {
+        margin-top: 70px;
+        padding: 0 5vw 40px;
+    }
+
+    .admin__cab {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .admin__cuerpo {
+        grid-template-columns: 1fr;
+    }
+
+    .editor__logo {
+        width: 70px;
+    }
+}

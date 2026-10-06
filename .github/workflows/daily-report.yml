@@ -1,0 +1,24 @@
+name: Resumen diario de visitas
+
+# Netlify en plan gratuito no tiene cron nativo, así que usamos GitHub Actions
+# (gratis) para llamar a la función /api/diario una vez al día.
+
+on:
+  schedule:
+    # 14:00 UTC = 10:00 / 11:00 hora de Chile (depende de horario de verano)
+    - cron: "0 14 * * *"
+  workflow_dispatch: # permite ejecutarlo a mano desde la pestaña Actions
+
+jobs:
+  enviar-resumen:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pedir resumen de visitas a Netlify
+        run: |
+          curl --fail --silent --show-error \
+            -H "x-cron-secret: ${{ secrets.CRON_SECRET }}" \
+            "${{ secrets.NETLIFY_DIARIO_URL }}"
+
+      - name: Mostrar resultado
+        if: always()
+        run: echo "Listo."

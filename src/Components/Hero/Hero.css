@@ -1,0 +1,139 @@
+.hero {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    padding: 0 8vw;
+    overflow: hidden;
+    position: relative;
+}
+
+.text-container  {
+    flex: 1;
+    max-width: 50%;
+}
+
+.text-container span{
+    font-size: 2.5rem;
+    color: #232155;
+    display: block;
+    margin-bottom: 10px;
+}
+
+html.dark .text-container span {
+    color: #f9f9f9;
+}
+
+.text-container h1 {
+    font-size: 4rem;
+    color: #3931e1;
+    margin-bottom: 30px;
+    line-height: 1.2;
+}
+
+html.dark h1{
+    color: #fff;
+}
+
+.text-container p {
+color:  #4a4b6d;
+    margin-bottom: 20px;
+}
+
+html.dark .text-container p {
+    color: #f9f9f9;
+}
+
+.btn {
+    background-color: #3931E1;
+    padding: 15px 50px;
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: background color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.btn:hover {
+    opacity: 0.9;
+    transform: translateY(-3px);
+}
+
+/* Caja que contiene la foto. El círculo se centra aquí adentro,
+   así queda siempre justo detrás de la imagen. */
+.image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+/* Caja que se ajusta exactamente al tamaño de la foto.
+   Al ser inline-flex, el círculo puede medirse respecto de ella
+   y no respecto de todo el espacio disponible. */
+.hero-foto {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+}
+
+.hero-foto img {
+    width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* Círculo detrás de la foto.
+   Se mide por el ALTO (no por el ancho) para que siempre quepa entero
+   dentro de la foto: así se ve el disco completo en vez de solo un arco.
+   Con width: 118% quedaba más alto que la foto y se cortaba arriba. */
+.hero-foto .circle-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 88%;
+    width: auto;
+    aspect-ratio: 1;
+    background-color: #3931e1;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        height: auto;
+        padding-top: 50px;
+    }
+
+    .text-container {
+        max-width: 100%;
+    }
+
+    .image-container {
+        display: none;
+    }
+}
+
+/* En pantallas medianas el texto y la foto se apilan mejor
+   y el círculo sigue siendo proporcional al espacio disponible. */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .text-container h1 {
+        font-size: 3rem;
+    }
+
+    .text-container span {
+        font-size: 2rem;
+    }
+}

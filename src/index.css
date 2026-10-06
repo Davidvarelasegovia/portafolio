@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+         font-family: "Poppins", sans-serif;
+         background: linear-gradient( to right, #f9f9f9, #f3f0ff, #f9f9f9);
+         transition: background 0.3s ease;
+}
+
+html.dark body {
+         background: linear-gradient( to right, #121130, #1e1d4b, #121130);
+}
+
+/* ============================================================
+   ICONO DE MARCA (estilo compartido)
+   Se usa en los iconos de redes sociales del footer y en los
+   logos de las habilidades. Mismo formato en todos lados:
+   circulo con el color de la marca, y al pasar el mouse se
+   llena y se ilumina.
+   El color de cada uno llega por la variable --color-marca.
+   ============================================================ */
+.icono-marca {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    text-decoration: none;
+    color: var(--color-icono, var(--color-marca));
+    background-color: color-mix(in srgb, var(--color-marca) 13%, transparent);
+    border: 1px solid var(--color-marca);
+    font-size: 22px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease,
+                color 0.3s ease,
+                background-color 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.icono-marca:hover,
+.icono-marca:focus-visible {
+    transform: translateY(-5px) scale(1.15);
+    background-color: var(--color-marca);
+    border-color: var(--color-marca);
+    color: #fff;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.45),
+                0 0 20px var(--color-marca);
+    outline: none;
+}
+
+.icono-marca:active {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45),
+                0 0 14px var(--color-marca);
+}

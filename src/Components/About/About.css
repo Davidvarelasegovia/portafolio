@@ -1,0 +1,129 @@
+.about-details {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8vw;
+    margin-top: 50px;
+    overflow: hidden;
+    /* Sin esto el círculo se anclaba al .hero (su ancestro posicionado)
+       y se movía de forma errática al cambiar el tamaño de pantalla */
+    position: relative;
+}
+
+/* Bloque que envuelve la foto. El círculo se centra aquí adentro,
+   así queda SIEMPRE detrás de la imagen y no de la sección entera. */
+.about-foto {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    max-width: 350px;
+}
+
+/* Círculo detrás de la foto.
+   Limitado a .about-foto para que no afecte al del Hero. */
+.about-foto .circle-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Proporcional a la foto: crece y se achica con ella */
+    width: 88%;
+    aspect-ratio: 1;
+    background-color: #3931e1;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.about-details img {
+    width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 1;
+}
+
+.about-infos {
+    flex: 1;
+    max-width: 50%;
+    text-align: left;
+}
+
+.about-infos h1 {
+    font-size: 3rem;
+    color: #232155;
+    margin-bottom: 20px;
+}
+
+html.dark .about-infos h1 {
+    color: #fff;
+}
+
+.about-infos p {
+    color: #4a4b6d;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+html.dark .about-infos p{
+    color: #f9f9f9;
+}
+
+/* Seccion de experiencia */
+.experience-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.experience {
+    text-align: center;
+}
+
+.experience i {
+    font-size: 2rem;
+    color: #3931e1;
+    margin-bottom: 10px;
+}
+
+.experience span {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #3931e1;
+}
+
+.experience p {
+    color: #4a4b6d;
+    margin-top: 5px;
+}
+
+html.dark .experience p {
+    color: #f9f9f9;
+}
+/* Responsive */
+
+     @media (max-width: 768px) {
+     .about-details {
+    flex-direction:column;
+    text-align: center;
+    padding-top: 50px;
+    }
+
+     .about-foto {
+        width: 60%;
+        max-width: 300px;
+        margin-bottom: 20px;
+     }
+
+     .about-details img {
+     width: 100%;
+     }
+
+     .about-infos {
+     max-width: 100%;
+     text-align: center;
+     }
+}

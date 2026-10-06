@@ -1,0 +1,104 @@
+.portafolio {
+    text-align: center;
+    margin-top: 50px;
+    padding: 0 8vw;
+}
+
+.portafolio h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #232155;
+    margin-bottom: 40px;
+}
+
+html.dark .portafolio h1 {
+    color: #fff;
+}
+/* Contenedor principal */
+.portafolio-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+/* tarjeta de cada proyecto */
+.portafolio-card {
+    display: flex;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+html.dark .portafolio-card {
+    border: 1px solid #49478d;
+    background-color: #232155;
+}
+/* Imagen */
+.portafolio-image {
+    width: 50%;
+    object-fit: cover;
+}
+
+/* Contenido */
+.portafolio-content {
+    width: 50%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.portafolio-content h3 {
+    font-size: 1.3rem;
+    color: #232155;
+    font-weight: 600;
+}
+
+html.dark .portafolio-content h3 {
+    color: #fff;
+}
+
+.portafolio-content p {
+    font-weight: 400;
+    color: #4a4b6d;
+}
+
+html.dark    .portafolio-content p {
+    color: #f9f9f9;
+}
+
+/* boton */
+.demo-button {
+    display: inline-block;
+    padding: 10px 15px;
+    background: #3931e1;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.demo-button:hover {
+    opacity: 0.9;
+}
+
+/* Diseño responsive */
+@media (min-width: 768px) {
+ .portafolio-container {
+    grid-template-columns: 1fr 1fr; /* 2 columnas en pantallas grandes */
+ }
+}
+
+@media (max-width: 600px) {
+    .portafolio-card {
+        flex-direction: column;
+    }
+
+    .portafolio-image,
+    .portafolio-content {
+        width: 100%;
+    }
+}

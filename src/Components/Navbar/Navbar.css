@@ -1,0 +1,218 @@
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1vw 8vw;
+    align-items: center;
+    z-index: 999;
+    box-shadow: 0 1px 3 px rgba(0, 0, 0.1);
+    background:
+    linear-gradient(to right, #f9f9f9, #f3f0ff, #f9f9f9);
+    transition: background 0.3s ease;
+}
+
+html.dark nav {
+    background:
+    linear-gradient(to right, #121130, #1e1d4b, #121130);
+}
+
+html.dark nav ul li a {
+    color: #f9f9f9;
+}
+
+nav ul.active {
+   right:0;
+}
+
+nav img {
+    width: 150px;
+}
+
+nav ul {
+     display: flex;
+     list-style-type: none;
+     margin: 0;
+     padding: 0;
+     /* El espaciado va aquí con gap en vez de margin+padding en cada li.
+        Con 6 links, tener 45px extra por cada uno empujaba el último
+        link fuera del nav en pantallas anchas. */
+     gap: clamp(6px, 1.1vw, 22px);
+}
+
+nav ul li {
+    /* sin margin-right ni padding: el gap del ul ya separa */
+}
+
+nav ul li a {
+   text-decoration: none;
+   color:#232155;
+   font-size: 1rem;
+   position:relative;
+   transition: color 0.3s ease;
+}
+
+
+nav ul li a::after {
+content: "";
+width: 0;
+height: 3px;
+background: #3931e1;
+position: absolute;
+left: 0;
+bottom: -6px;
+transition: width 0.5s ease;
+}
+
+nav ul li a:hover::after {
+    width:100%;
+}
+
+/* Link activo (página actual) */
+nav ul li a.activo {
+    color: #3931e1;
+}
+
+nav ul li a.activo::after {
+    width: 100%;
+}
+
+nav .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: clamp(8px, 1vw, 16px);
+}
+
+/* Botón de configuración: pequeño y discreto, al lado del sol/luna.
+   Lleva al panel de habilidades (/admin). */
+nav .nav-config {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    color: #9a9aae;
+    font-size: 13px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+}
+
+nav .nav-config:hover,
+nav .nav-config:focus-visible {
+    color: #3931e1;
+    background-color: rgba(57, 49, 225, 0.1);
+    border-color: rgba(57, 49, 225, 0.35);
+    outline: none;
+}
+
+nav .nav-config:active {
+    transform: scale(0.94);
+}
+
+/* En pantallas chicas se achica un poco más para no comerse el espacio */
+@media only screen and (max-width: 768px) {
+    nav .nav-config {
+        width: 24px;
+        height: 24px;
+        font-size: 12px;
+    }
+
+    nav .nav-actions {
+        gap: 8px;
+    }
+}
+
+/* Zona de transición: el nav todavía va en horizontal pero aprieta.
+   Ojo con el min-width: con barra de scroll vertical el viewport real
+   es ~15px más angosto que la ventana, así que 769px de ventana
+   quedan en ~754px y una regla que empiece en 769 no se aplicaría. */
+@media only screen and (min-width: 600px) and (max-width: 1150px) {
+    nav {
+        padding: 0.8vw 4vw;
+    }
+
+    nav ul {
+        gap: 4px;
+    }
+
+    nav ul li a {
+        font-size: 0.88rem;
+    }
+
+    nav .nav-config {
+        width: 24px;
+        height: 24px;
+        font-size: 12px;
+    }
+
+    nav .nav-actions {
+        gap: 8px;
+    }
+
+    .theme-toggle-button {
+        width: 38px;
+        height: 38px;
+        padding: 8px;
+        font-size: 17px;
+    }
+}
+
+nav .fa-bars,
+nav .fa-xmark {
+    display: none;
+}
+
+@media only screen and (max-width: 768px) {
+   nav .fa-bars,
+   nav .fa-xmark {
+        display: block;
+        font-size: 25px;
+        cursor: pointer;
+   }
+
+     nav ul {
+        background: #3931e1;
+        color: #fff;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 200px;
+        height: 100vh;
+        padding-top: 50px;
+        z-index: 2;
+        transition: right 0.5s;
+        display: flex ;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+     }
+
+     nav ul li {
+        display: block;
+        margin: 25px;
+     }
+
+    nav ul li a {
+        color: #fff;
+    }
+
+    nav ul li a:hover {
+      opacity: 0.9;
+    }
+
+    nav ul .fa-solid {
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        cursor: pointer;
+    }
+
+     nav ul .fa-bars {
+        color: #232155;
+    }
+
+}

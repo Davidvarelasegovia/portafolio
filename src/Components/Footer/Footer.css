@@ -1,0 +1,41 @@
+.footer {
+    background:
+    linear-gradient(to right,#121130, #1e1d4b, #121130);
+    padding: 20px 8vw;
+    color: #f9f9f9;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.footer hr {
+    border: none;
+    border-top: 1px solid rgba(249, 249, 249, 0.15);
+    margin-bottom: 5px;
+}
+
+/* Lista de redes sociales */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    list-style: none;
+    margin: 20px 0 25px;
+    padding: 0;
+}
+
+/* El círculo de cada red usa la clase compartida .icono-marca
+   (definida en index.css), igual que los logos de las habilidades. */
+
+/* Responsive: Ajuste para moviles */
+@media (max-width: 600px) {
+    .social-icons {
+        gap: 12px;
+    }
+
+    .social-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 19px;
+    }
+}

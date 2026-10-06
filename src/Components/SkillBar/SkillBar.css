@@ -1,0 +1,183 @@
+/* ============================================================
+   Barra de estado de cada habilidad
+   ============================================================ */
+.skill {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 4px;
+}
+
+/* El círculo del logo usa la clase compartida .icono-marca
+   (definida en index.css), igual que los iconos del footer. */
+
+/* --- Columna de información --- */
+.skill__info {
+    flex: 1;
+    min-width: 0;
+}
+
+.skill__fila {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.skill__nombre {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #232155;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+html.dark .skill__nombre {
+    color: #fff;
+}
+
+.skill__nota {
+    font-size: 0.72rem;
+    font-style: normal;
+    font-weight: 400;
+    color: #8a8aa3;
+}
+
+/* --- Etiqueta de nivel --- */
+.skill__nivel {
+    flex-shrink: 0;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 3px 9px;
+    border-radius: 20px;
+    color: var(--color-nivel);
+    background-color: color-mix(in srgb, var(--color-nivel) 14%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-nivel) 40%, transparent);
+}
+
+/* --- Barra de progreso --- */
+.skill__barra {
+    position: relative;
+    height: 9px;
+    width: 100%;
+    border-radius: 20px;
+    background-color: #e9e7f5;
+    overflow: hidden;
+}
+
+html.dark .skill__barra {
+    background-color: rgba(249, 249, 249, 0.12);
+}
+
+.skill__progreso {
+    display: block;
+    height: 100%;
+    border-radius: 20px;
+    /* El ancho viene del JSX (width inline). La animación es solo decorativa:
+       si el navegador no la ejecuta, la barra se ve igual. */
+    animation: aparecer-barra 0.7s ease both;
+}
+
+@keyframes aparecer-barra {
+    from {
+        opacity: 0.35;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Respeta quien pide menos movimiento en el sistema */
+@media (prefers-reduced-motion: reduce) {
+    .skill__progreso {
+        animation: none;
+    }
+}
+
+/* Relleno con el color según el nivel */
+.skill__progreso--basico {
+    background: linear-gradient(90deg, #f4a896, #e07a5f);
+}
+
+.skill__progreso--medio {
+    background: linear-gradient(90deg, #f4d58d, #e9c46a);
+}
+
+.skill__progreso--avanzado {
+    background: linear-gradient(90deg, #6ee7a8, #25d366);
+}
+
+/* Porcentaje a la derecha de la barra */
+.skill__porcentaje {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #8a8aa3;
+    text-align: right;
+}
+
+/* --- Tamaño del logo SVG dentro del círculo --- */
+.tech-logo {
+    width: 24px;
+    height: 24px;
+    display: block;
+}
+
+.skill:hover .tech-logo {
+    width: 26px;
+    height: 26px;
+}
+
+/* Logos de texto o contorno (Express, Django...): necesitan más
+   espacio porque sus trazos finos se pierden a tamaño normal. */
+.tech-logo--grande {
+    width: 28px;
+    height: 28px;
+}
+
+.skill:hover .tech-logo--grande {
+    width: 30px;
+    height: 30px;
+}
+
+/* --- Sigla: se usa cuando la herramienta no tiene logo oficial --- */
+.tech-logo__sigla {
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+}
+
+/* --- Nombre + descripción corta --- */
+.skill__titulo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.skill__desc {
+    font-size: 0.76rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.35;
+    color: #8a8aa3;
+}
+
+html.dark .skill__desc {
+    color: #a9a9c4;
+}
+
+/* --- Efecto al pasar el mouse --- */
+
+.skill:hover .skill__nombre {
+    color: #3931e1;
+}
+
+html.dark .skill:hover .skill__nombre {
+    color: #fff;
+}
